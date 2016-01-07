@@ -1,7 +1,7 @@
 {
   "name": "whiteboard-grid",
   "version": "1.0.0",
-  "description": "Whiteboard grid system",
+  "description": "Fully responsive, fluid and nestable grid system",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,14 +16,16 @@
     "url": "https://github.com/teefouad/whiteboard-grid/issues"
   },
   "homepage": "https://github.com/teefouad/whiteboard-grid#readme",
+  "keywords": [
+  ],
   "dependencies": {
     "compass-importer": "^0.1.3",
+    "easy-media-queries": "^1.0.2",
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^1.1.0",
     "grunt-notify": "^0.4.3",
-    "grunt-sass": "^1.1.0"
-  },
-  "devDependencies": {
     "load-grunt-tasks": "^3.4.0"
-  }
+  },
+  "devDependencies": {}
 }

@@ -1,0 +1,66 @@
+@import "init";
+
+/* --------------------------------- */
+/* GRID: CONTAINER
+/* --------------------------------- */
+
+  @mixin wb-containers-at-breakpoint($wb-breakpoint, $wb-breakpoint-name) {
+    // we need to loop through the breakpoints in reverse order, so we
+    // will use a list of keys and use a 'for' loop instead of 'each'
+    $breakpoint-keys: map-keys($wb-breakpoints);
+    $breakpoint-keys-length: length($breakpoint-keys);
+    
+    // we will need to use a flag to break from the 'for' loop
+    $should-loop: true;
+    
+    // start with an empty selector and grow from there
+    $containers-selector: ();
+    
+    // loop through the keys list and append proper selectors
+    @for $i from $breakpoint-keys-length to 0 {
+      @if $should-loop == true {
+        $containers-selector: append($containers-selector, unquote('.#{$wb-prefix}container#{map-get(map-get($wb-breakpoints, nth($breakpoint-keys, $i)), "container-suffix")}'), comma);
+      }
+      
+      @if $wb-breakpoint-name == nth($breakpoint-keys, $i) {
+        $should-loop: false;
+      }
+    }
+    
+    // set container styles
+    #{$containers-selector} {
+      width: map-get($wb-breakpoint, 'container-width');
+    }
+  }
+  
+  // build an 'all containers' selector
+  $wb-all-containers-selector: ();
+  
+  @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
+    $wb-all-containers-selector: append($wb-all-containers-selector, unquote('.#{$wb-prefix}container#{map-get($wb-breakpoint, "container-suffix")}'), comma);
+  }
+  
+  /* set default styles for all containers */
+  #{$wb-all-containers-selector} {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    @include box-sizing(border-box);
+  }
+  
+  /* container width */
+  // set container styles for each breakpoint
+  $wb-first-breakpoint: true;
+  
+  @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
+    @if $wb-first-breakpoint != true {
+      @include wb-media('>#{$wb-breakpoint-name}') {
+        @include wb-containers-at-breakpoint($wb-breakpoint, $wb-breakpoint-name);
+      }
+    }
+    @else{
+      @include wb-containers-at-breakpoint($wb-breakpoint, $wb-breakpoint-name);
+    }
+    
+    $wb-first-breakpoint: false;
+  }

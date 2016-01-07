@@ -1,8 +1,12 @@
+var compass = require("compass-importer");
+var media = require("easy-media-queries");
+
+
 module.exports = function(grunt) {
   
   // Load grunt tasks
   require("load-grunt-tasks")(grunt);
-
+  
   // Configuration for tasks goes here.
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
@@ -10,7 +14,8 @@ module.exports = function(grunt) {
     sass: {
       options: {
         sourceMap: false,
-        outputStyle: "expanded"
+        outputStyle: "expanded",
+        importer: [media, compass]
       },
       
       grid: {
@@ -22,12 +27,23 @@ module.exports = function(grunt) {
           ext: ".css",
           extDot: "last"
         }]
+      },
+      
+      demos: {
+        files: [{
+          expand: true,
+          cwd: "demos",
+          src: ["*.scss"],
+          dest: "demos",
+          ext: ".css",
+          extDot: "last"
+        }]
       }
     },
     
     watch: {
       sass: {
-        files: ["sass/*.scss", "sass/**/"],
+        files: ["sass/*.scss", "sass/wb/*.scss", "sass/wb/**/"],
         tasks: ["sass:grid", "notify:complete"],
         options: {
           spawn: false

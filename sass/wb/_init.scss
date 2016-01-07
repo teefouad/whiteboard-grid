@@ -1,0 +1,47 @@
+@import "compass/css3";
+@import "wb-media";
+
+// Variables
+$wb-namespace   : 'wb' !global;
+$wb-prefix      : if($wb-namespace, '#{$wb-namespace}-', '') !global;
+
+// Breakpoints
+$wb-breakpoints: wb-add-breakpoint("xsmall", (
+  "value"              : 480px,
+  "container-width"    : 100%,
+  "container-suffix"   : "-xsmall",
+  "horizontal-gutter"  : 0,
+  "vertical-gutter"    : 0,
+  "suffix"             : "xs",
+  "suffix-alias"       : "xs"
+));
+
+$wb-breakpoints: wb-add-breakpoint("small", (
+  "value"              : 768px,
+  "container-width"    : 750px,
+  "container-suffix"   : "-small",
+  "horizontal-gutter"  : 0,
+  "vertical-gutter"    : 0,
+  "suffix"             : "sm",
+  "suffix-alias"       : "sm"
+));
+
+$wb-breakpoints: wb-add-breakpoint("medium", (
+  "value"              : 992px,
+  "container-width"    : 960px,
+  "container-suffix"   : "",
+  "horizontal-gutter"  : 0,
+  "vertical-gutter"    : 0,
+  "suffix"             : "",
+  "suffix-alias"       : "md"
+));
+
+$wb-breakpoints: wb-add-breakpoint("large", (
+  "value"              : 1200px,
+  "container-width"    : 1140px,
+  "container-suffix"   : "-large",
+  "horizontal-gutter"  : 0,
+  "vertical-gutter"    : 0,
+  "suffix"             : "lg",
+  "suffix-alias"       : "lg"
+));
