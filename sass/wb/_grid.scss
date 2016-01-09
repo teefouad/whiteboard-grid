@@ -4,11 +4,12 @@
 /* GRID: ROW
 /* --------------------------------- */
 
-  .#{$wb-prefix}row {
+  .#{$wb-prefix}grid {
     display: block;
     padding: 0;
     list-style: none;
     clear: both;
+    overflow: auto;
     @include box-sizing(border-box);
     
     &:before,

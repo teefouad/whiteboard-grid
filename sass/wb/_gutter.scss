@@ -6,12 +6,12 @@
   
   /* DEFAULT GRID GUTTER ---------------- */
 
-    @mixin wb-grid-gutter($horizontal-gutter, $vertical-gutter: $horizontal-gutter, $row-suffix: '') {
-      .#{$wb-prefix}row#{$row-suffix} {
-        margin: #{-0.5*$vertical-gutter} #{-0.5*$horizontal-gutter};
+    @mixin wb-grid-gutter($horizontal-gutter, $vertical-gutter: $horizontal-gutter, $grid-suffix: '') {
+      .#{$wb-prefix}grid#{$grid-suffix} {
+        margin: #{-0.5 * $vertical-gutter} #{-0.5 * $horizontal-gutter};
         
-        > [class*='#{$wb-prefix}col-'] {
-          padding: 0.5*$vertical-gutter 0.5*$horizontal-gutter;
+        > [class*='#{$wb-prefix}span-'] {
+          padding: (0.5 * $vertical-gutter) (0.5 * $horizontal-gutter);
         }
       }
     }

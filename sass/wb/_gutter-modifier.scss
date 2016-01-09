@@ -3,14 +3,14 @@
 /* MODIFIER: GRID GUTTER SIZE ---------------- */
 
   @mixin wb-grid-gutter-modifiers-at-breakpoint($breakpoint-suffix) {
-    @include wb-grid-gutter(0                         , 0                         , '--gutter-none#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-small     , $wb-grid-gutter-small     , '--gutter-small#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-smaller   , $wb-grid-gutter-smaller   , '--gutter-smaller#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-smallest  , $wb-grid-gutter-smallest  , '--gutter-smallest#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-normal    , $wb-grid-gutter-normal    , '--gutter-normal#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-large     , $wb-grid-gutter-large     , '--gutter-large#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-larger    , $wb-grid-gutter-larger    , '--gutter-larger#{$breakpoint-suffix}');
-    @include wb-grid-gutter($wb-grid-gutter-largest   , $wb-grid-gutter-largest   , '--gutter-largest#{$breakpoint-suffix}');
+    @include wb-grid-gutter(0                         , 0                         , '-gutter-none#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-small     , $wb-grid-gutter-small     , '-gutter-small#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-smaller   , $wb-grid-gutter-smaller   , '-gutter-smaller#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-smallest  , $wb-grid-gutter-smallest  , '-gutter-smallest#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-normal    , $wb-grid-gutter-normal    , '-gutter-normal#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-large     , $wb-grid-gutter-large     , '-gutter-large#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-larger    , $wb-grid-gutter-larger    , '-gutter-larger#{$breakpoint-suffix}');
+    @include wb-grid-gutter($wb-grid-gutter-largest   , $wb-grid-gutter-largest   , '-gutter-largest#{$breakpoint-suffix}');
   }
   
   $wb-processed-breakpoint-name: null;

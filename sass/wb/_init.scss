@@ -5,17 +5,17 @@
 $wb-namespace                 : 'wb' !global;
 $wb-prefix                    : if($wb-namespace, '#{$wb-namespace}-', '') !global;
 
-$wb-grid-columns-count        : 8 !global;
+$wb-grid-columns-count        : 6 !global;
   
 $wb-grid-gutter-normal        : 2rem !global;
 
-$wb-grid-gutter-small         : (0.75 * $wb-grid-gutter-normal) !global;
-$wb-grid-gutter-smaller       : (0.5 * $wb-grid-gutter-normal) !global;
-$wb-grid-gutter-smallest      : (0.125 * $wb-grid-gutter-normal) !global;
+$wb-grid-gutter-small         : (0.5 * $wb-grid-gutter-normal) !global;
+$wb-grid-gutter-smaller       : (0.3 * $wb-grid-gutter-normal) !global;
+$wb-grid-gutter-smallest      : (0.15 * $wb-grid-gutter-normal) !global;
 
-$wb-grid-gutter-large         : (1.25 * $wb-grid-gutter-normal) !global;
-$wb-grid-gutter-larger        : (1.5 * $wb-grid-gutter-normal) !global;
-$wb-grid-gutter-largest       : (2 * $wb-grid-gutter-normal) !global;
+$wb-grid-gutter-large         : (1.5 * $wb-grid-gutter-normal) !global;
+$wb-grid-gutter-larger        : (2 * $wb-grid-gutter-normal) !global;
+$wb-grid-gutter-largest       : (2.5 * $wb-grid-gutter-normal) !global;
 
 // Breakpoints
 $wb-breakpoints: wb-add-breakpoint('xsmall', (
