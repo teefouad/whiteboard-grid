@@ -4,7 +4,7 @@
 /* GRID: SPANS
 /* --------------------------------- */
 
-  // SHARED STYLES ----------------
+  // STACKED (SHARED STYLES) ----------------
 
   [class*='#{$wb-prefix}span-'] {
     position: relative;
@@ -12,69 +12,56 @@
     @include box-sizing(border-box);
   }
   
-  // WIDTHS & OFFSETS ----------------
+  // INLINE ----------------
   
-    @mixin wb-inline-columns-at-breakpoint($breakpoint-suffix) {
-      $all-columns-selector: ();
-      $processed-columns: ();
-      
-      @for $b from 1 through $wb-grid-columns-count {
-        @for $a from 1 through $b {
-          @if index($processed-columns, #{$a/$b}) == null {
-            $processed-columns: append($processed-columns, #{$a/$b});
-            $all-columns-selector: append($all-columns-selector, unquote("[class*='#{$wb-prefix}grid'] > .#{$wb-prefix}span-#{$a}-#{$b}#{$breakpoint-suffix}"), comma);
-            
-            // col
-            .#{$wb-prefix}span-#{$a}-#{$b}#{$breakpoint-suffix} { width: (100% * $a / $b); }
-            
-            // pull
-            .#{$wb-prefix}pull-#{$a}-#{$b}#{$breakpoint-suffix} { left: (-100% * $a / $b); }
-            
-            // push
-            .#{$wb-prefix}push-#{$a}-#{$b}#{$breakpoint-suffix} { left: (100% * $a / $b); }
-            
-            // offset
-            .#{$wb-prefix}offset-#{$a}-#{$b}#{$breakpoint-suffix} { margin-left: (100% * $a / $b); }
-          }
+  @mixin wb-spans-at-breakpoint($breakpoint-suffix) {
+    $processed-spans: ();
+    
+    @for $b from 1 through $wb-grid-columns-count {
+      @for $a from 1 through $b {
+        @if index($processed-spans, #{$a/$b}) == null {
+          $processed-spans: append($processed-spans, #{$a/$b});
+          .#{$wb-prefix}span#{$breakpoint-suffix}-#{$a}-#{$b} { width: (100% * $a / $b); }
         }
-      }
-      
-      #{$all-columns-selector},
-      [class*='#{$wb-prefix}grid'] > .#{$wb-prefix}span-auto#{$breakpoint-suffix} {
-        float: left;
-        clear: none;
-      }
-      
-      // first
-      [class*='#{$wb-prefix}grid'] > .#{$wb-prefix}span-first#{$breakpoint-suffix} {
-        clear: left;
-      }
-      
-      // last
-      [class*='#{$wb-prefix}grid'] > .#{$wb-prefix}span-last#{$breakpoint-suffix} {
-        float: right;
-      }
-      
-      // centered
-      [class*='#{$wb-prefix}grid'] > .#{$wb-prefix}span-centered#{$breakpoint-suffix} {
-        float: none;
-        margin-right: auto;
-        margin-left: auto;
       }
     }
     
-    // create column widths and offsets for each breakpoint
-    $wb-processed-breakpoint-name: null;
-    
-    @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
-      @if $wb-processed-breakpoint-name != null {
-        @include wb-media('>#{$wb-processed-breakpoint-name}') {
-          @include wb-inline-columns-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
-        }
-      }
-      @else {
-        @include wb-inline-columns-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
-      }
-      
-      $wb-processed-breakpoint-name: $wb-breakpoint-name;
+    [class*='#{$wb-prefix}span#{$breakpoint-suffix}-'] {
+      float: left;
+      clear: none;
     }
+    
+    // first
+    .#{$wb-prefix}span#{$breakpoint-suffix}-first {
+      clear: left;
+    }
+    
+    // last
+    .#{$wb-prefix}span#{$breakpoint-suffix}-last {
+      float: right;
+    }
+    
+    // centered
+    .#{$wb-prefix}span#{$breakpoint-suffix}-centered {
+      clear: both;
+      float: none;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  
+  // create .span classes for each breakpoint
+  $wb-processed-breakpoint-name: null;
+  
+  @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
+    @if $wb-processed-breakpoint-name != null {
+      @include wb-media('>#{$wb-processed-breakpoint-name}') {
+        @include wb-spans-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+      }
+    }
+    @else {
+      @include wb-spans-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+    }
+    
+    $wb-processed-breakpoint-name: $wb-breakpoint-name;
+  }

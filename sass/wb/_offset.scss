@@ -1,0 +1,34 @@
+@import 'init';
+
+/* --------------------------------- */
+/* GRID: OFFSET
+/* --------------------------------- */
+
+  @mixin wb-offset-at-breakpoint($breakpoint-suffix) {
+    $processed-offset: ();
+    
+    @for $b from 1 through $wb-grid-columns-count {
+      @for $a from 1 through $b {
+        @if index($processed-offset, #{$a/$b}) == null {
+          $processed-offset: append($processed-offset, #{$a/$b});
+          .#{$wb-prefix}offset#{$breakpoint-suffix}-#{$a}-#{$b} { margin-left: (100% * $a / $b); }
+        }
+      }
+    }
+  }
+  
+  // create .offset classes for each breakpoint
+  $wb-processed-breakpoint-name: null;
+  
+  @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
+    @if $wb-processed-breakpoint-name != null {
+      @include wb-media('>#{$wb-processed-breakpoint-name}') {
+        @include wb-offset-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+      }
+    }
+    @else {
+      @include wb-offset-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+    }
+    
+    $wb-processed-breakpoint-name: $wb-breakpoint-name;
+  }

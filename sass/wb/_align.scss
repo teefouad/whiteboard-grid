@@ -8,48 +8,53 @@
 
   // Example:
     
-  //  <div class='wb-grid wb-grid-align-middle-sm'>
-  //    <div class='wb-span-1-2-sm'>...</div>
-  //    <div class='wb-span-1-2-sm'>...</div>
+  //  <div class='wb-grid wb-grid-align-sm-middle'>
+  //    <div class='wb-span-sm-1-2'>...</div>
+  //    <div class='wb-span-sm-1-2'>...</div>
   //  </div>
 
-  @mixin wb-align-columns-at-breakpoint($breakpoint-name) {
+  @mixin wb-grid-align-at-breakpoint($breakpoint-name) {
     $breakpoint: map-get($wb-breakpoints, $breakpoint-name);
     $breakpoint-suffix: map-get($breakpoint, 'suffix');
     
-    .#{$wb-prefix}grid-align-top#{$breakpoint-suffix},
-    .#{$wb-prefix}grid-align-middle#{$breakpoint-suffix},
-    .#{$wb-prefix}grid-align-bottom#{$breakpoint-suffix} {
+    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-top,
+    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-middle,
+    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-bottom {
       display: table;
       min-width: 100%;
       
-      > [class*='#{$wb-prefix}span-'] {
+      > * {
         display: table-cell;
-        vertical-align: top;
+        vertical-align: middle;
         float: none;
       }
     }
     
-    .#{$wb-prefix}grid-align-middle#{$breakpoint-suffix} {
-      > [class*='#{$wb-prefix}span-'] { vertical-align: middle; }
+    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-top {
+      > * { vertical-align: top; }
     }
     
-    .#{$wb-prefix}grid-align-bottom#{$breakpoint-suffix} {
-      > [class*='#{$wb-prefix}span-'] { vertical-align: bottom; }
+    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-bottom {
+      > * { vertical-align: bottom; }
     }
+    
+    // span align
+    .#{$wb-prefix}span-align#{$breakpoint-suffix}-top { vertical-align: top; }
+    .#{$wb-prefix}span-align#{$breakpoint-suffix}-middle { vertical-align: middle; }
+    .#{$wb-prefix}span-align#{$breakpoint-suffix}-bottom { vertical-align: bottom; }
   }
   
-  // apply column styles for each breakpoint
+  // create align classes for each breakpoint
   $wb-processed-breakpoint-name: null;
   
   @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
     @if $wb-processed-breakpoint-name != null {
       @include wb-media('>#{$wb-processed-breakpoint-name}') {
-        @include wb-align-columns-at-breakpoint($wb-breakpoint-name);
+        @include wb-grid-align-at-breakpoint($wb-breakpoint-name);
       }
     }
-    @else{
-      @include wb-align-columns-at-breakpoint($wb-breakpoint-name);
+    @else {
+      @include wb-grid-align-at-breakpoint($wb-breakpoint-name);
     }
     
     $wb-processed-breakpoint-name: $wb-breakpoint-name;
