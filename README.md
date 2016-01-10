@@ -62,8 +62,6 @@ Grid systems are used for creating page layouts through a series of rows and col
 
 The following table gives you an overview of the `wb-col-*` classes that can be used.
 
-| | |
-|---|---|
 | `.wb-col-1-1` | Fills 100% of the available width. |
 | `.wb-col-1-2` | Divides the row into halves. |
 | `.wb-col-1-3` to `.wb-col-2-3` | Divides the row into thirds. |
@@ -72,7 +70,7 @@ The following table gives you an overview of the `wb-col-*` classes that can be 
 | `.wb-col-1-6` to `.wb-col-5-6` | Divides the row into sixths. |
   
 ### Simple layouts
-Using a single set of .wb-col-* grid classes, you can create a basic grid system 
+Using a single set of `.wb-col-*` grid classes, you can create a basic grid system 
 that starts out stacked on mobile devices and tablet devices (the extra-small to medium range) before becoming horizontal on desktop (normal to large) devices.
 Place grid columns in any .wb-row where each .wb-col-* spans a certain portion of the row.
     
