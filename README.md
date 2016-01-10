@@ -12,43 +12,43 @@ inside each grid, which define the column width.
 You can use Whiteboard grid in node-sass or any project that depends on node-sass.
 The only thing you need to do to make this work is add the importer to the options and include the grid system.
 
-  ### node-sass
-  ```js
-  var sass = require("node-sass");
-  var wbGrid = require("whiteboard-grid");
+### node-sass
+```js
+var sass = require("node-sass");
+var wbGrid = require("whiteboard-grid");
 
-  sass.render({
-    data: '@import "wb-grid";',
-    importer: wbGrid
-  });
-  ```
+sass.render({
+  data: '@import "wb-grid";',
+  importer: wbGrid
+});
+```
 
-  ### grunt-sass
-  ```js
-  var wbGrid = require("whiteboard-grid");
+### grunt-sass
+```js
+var wbGrid = require("whiteboard-grid");
 
-  grunt.initConfig({
-      sass:{
-          options: {
-              importer: wbGrid
-          },
-          ...        
-      }
-  })
-  ```
+grunt.initConfig({
+    sass:{
+        options: {
+            importer: wbGrid
+        },
+        ...        
+    }
+})
+```
 
-  ### gulp-sass
-  ```js
-  var gulp = require("gulp");
-  var sass = require("gulp-sass");
-  var wbGrid = require("whiteboard-grid");
+### gulp-sass
+```js
+var gulp = require("gulp");
+var sass = require("gulp-sass");
+var wbGrid = require("whiteboard-grid");
 
-  gulp.task("sass", function() {
-      return gulp.src("sass/**/*.scss")
-        .pipe(sass({ importer: wbGrid }).on("error", sass.logError))
-        .pipe(gulp.dest("./css"));
-  });
-  ```
+gulp.task("sass", function() {
+    return gulp.src("sass/**/*.scss")
+      .pipe(sass({ importer: wbGrid }).on("error", sass.logError))
+      .pipe(gulp.dest("./css"));
+});
+```
 
 ## Getting Started
 ### Grid System 101
