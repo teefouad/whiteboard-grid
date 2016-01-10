@@ -22,8 +22,8 @@ $wb-breakpoints: wb-add-breakpoint('xsmall', (
   'value'              : 480px,
   'container-width'    : 100%,
   'container-suffix'   : '-xsmall',
-  'horizontal-gutter'  : $wb-grid-gutter-normal,
-  'vertical-gutter'    : $wb-grid-gutter-normal,
+  'horizontal-gutter'  : $wb-grid-gutter-smaller,
+  'vertical-gutter'    : $wb-grid-gutter-smaller,
   'suffix'             : '-xs',
   'suffix-alias'       : '-xs'
 ));
@@ -32,8 +32,8 @@ $wb-breakpoints: wb-add-breakpoint('small', (
   'value'              : 768px,
   'container-width'    : 750px,
   'container-suffix'   : '-small',
-  'horizontal-gutter'  : $wb-grid-gutter-normal,
-  'vertical-gutter'    : $wb-grid-gutter-normal,
+  'horizontal-gutter'  : $wb-grid-gutter-small,
+  'vertical-gutter'    : $wb-grid-gutter-small,
   'suffix'             : '-sm',
   'suffix-alias'       : '-sm'
 ));
