@@ -62,6 +62,7 @@ Grid systems are used for creating page layouts through a series of rows and col
 
 The following table gives you an overview of the `wb-col-*` classes that can be used.
 
+| | |
 |---|---|
 | `.wb-col-1-1` | Fills 100% of the available width. |
 | `.wb-col-1-2` | Divides the row into halves. |
