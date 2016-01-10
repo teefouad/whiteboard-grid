@@ -2,6 +2,10 @@
 /* GRID
 /* ======================================================================= */
 
+@import 'wb/container';
+@import 'wb/row';
+@import 'wb/row-ab';
+@import 'wb/row-auto';
 @import 'wb/columns';
 @import 'wb/pull';
 @import 'wb/push';
@@ -9,8 +13,4 @@
 @import 'wb/align';
 @import 'wb/gutter';
 @import 'wb/gutter-modifier';
-@import 'wb/row';
-@import 'wb/row-ab';
-@import 'wb/row-auto';
-@import 'wb/container';
 @import 'wb/panel';
