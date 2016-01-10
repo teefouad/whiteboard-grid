@@ -1,40 +1,40 @@
 @import 'init';
 
 /* --------------------------------- */
-/* GRID: GRID-AB
+/* GRID: ROW-AB
 /* --------------------------------- */
 
-  [class*='#{$wb-prefix}grid-ab'] {
-    > .#{$wb-prefix}span-a,
-    > .#{$wb-prefix}span-b {
+  [class*='#{$wb-prefix}row-ab'] {
+    > .#{$wb-prefix}col-a,
+    > .#{$wb-prefix}col-b {
       text-align: center;
     }
   }
   
-  @mixin wb-grid-ab-at-breakpoint($breakpoint-suffix) {
-    .#{$wb-prefix}grid-ab#{$breakpoint-suffix} {
-      > .#{$wb-prefix}span-a {
+  @mixin wb-row-ab-at-breakpoint($breakpoint-suffix) {
+    .#{$wb-prefix}row-ab#{$breakpoint-suffix} {
+      > .#{$wb-prefix}col-a {
         text-align: left;
       }
       
-      > .#{$wb-prefix}span-b {
+      > .#{$wb-prefix}col-b {
         float: right;
         text-align: right;
       }
     }
   }
   
-  // create grid-ab classes for each breakpoint
+  // create row-ab classes for each breakpoint
   $wb-processed-breakpoint-name: null;
 
   @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
     @if $wb-processed-breakpoint-name != null {
       @include wb-media('>#{$wb-processed-breakpoint-name}') {
-        @include wb-grid-ab-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+        @include wb-row-ab-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
       }
     }
     @else {
-      @include wb-grid-ab-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+      @include wb-row-ab-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
     }
     
     $wb-processed-breakpoint-name: $wb-breakpoint-name;

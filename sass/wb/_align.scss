@@ -4,22 +4,22 @@
 /* GRID: ALIGN
 /* --------------------------------- */
 
-  // The breakpoint suffix must match the one used on the spans
+  // The breakpoint suffix must match the one used on the columns
 
   // Example:
     
-  //  <div class='wb-grid wb-grid-align-sm-middle'>
-  //    <div class='wb-span-sm-1-2'>...</div>
-  //    <div class='wb-span-sm-1-2'>...</div>
+  //  <div class='wb-row wb-row-align-sm-middle'>
+  //    <div class='wb-col-sm-1-2'>...</div>
+  //    <div class='wb-col-sm-1-2'>...</div>
   //  </div>
 
-  @mixin wb-grid-align-at-breakpoint($breakpoint-name) {
+  @mixin wb-row-align-at-breakpoint($breakpoint-name) {
     $breakpoint: map-get($wb-breakpoints, $breakpoint-name);
     $breakpoint-suffix: map-get($breakpoint, 'suffix');
     
-    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-top,
-    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-middle,
-    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-bottom {
+    .#{$wb-prefix}row-align#{$breakpoint-suffix}-top,
+    .#{$wb-prefix}row-align#{$breakpoint-suffix}-middle,
+    .#{$wb-prefix}row-align#{$breakpoint-suffix}-bottom {
       display: table;
       min-width: 100%;
       
@@ -30,18 +30,18 @@
       }
     }
     
-    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-top {
+    .#{$wb-prefix}row-align#{$breakpoint-suffix}-top {
       > * { vertical-align: top; }
     }
     
-    .#{$wb-prefix}grid-align#{$breakpoint-suffix}-bottom {
+    .#{$wb-prefix}row-align#{$breakpoint-suffix}-bottom {
       > * { vertical-align: bottom; }
     }
     
-    // span align
-    .#{$wb-prefix}span-align#{$breakpoint-suffix}-top { vertical-align: top; }
-    .#{$wb-prefix}span-align#{$breakpoint-suffix}-middle { vertical-align: middle; }
-    .#{$wb-prefix}span-align#{$breakpoint-suffix}-bottom { vertical-align: bottom; }
+    // column align
+    .#{$wb-prefix}col-align#{$breakpoint-suffix}-top { vertical-align: top; }
+    .#{$wb-prefix}col-align#{$breakpoint-suffix}-middle { vertical-align: middle; }
+    .#{$wb-prefix}col-align#{$breakpoint-suffix}-bottom { vertical-align: bottom; }
   }
   
   // create align classes for each breakpoint
@@ -50,11 +50,11 @@
   @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
     @if $wb-processed-breakpoint-name != null {
       @include wb-media('>#{$wb-processed-breakpoint-name}') {
-        @include wb-grid-align-at-breakpoint($wb-breakpoint-name);
+        @include wb-row-align-at-breakpoint($wb-breakpoint-name);
       }
     }
     @else {
-      @include wb-grid-align-at-breakpoint($wb-breakpoint-name);
+      @include wb-row-align-at-breakpoint($wb-breakpoint-name);
     }
     
     $wb-processed-breakpoint-name: $wb-breakpoint-name;

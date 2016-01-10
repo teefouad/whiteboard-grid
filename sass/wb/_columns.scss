@@ -1,12 +1,12 @@
 @import 'init';
 
 /* --------------------------------- */
-/* GRID: SPANS
+/* GRID: COLUMNS
 /* --------------------------------- */
 
   // STACKED (SHARED STYLES) ----------------
 
-  [class*='#{$wb-prefix}span-'] {
+  [class*='#{$wb-prefix}col-'] {
     position: relative;
     min-height: 1px;
     @include box-sizing(border-box);
@@ -14,35 +14,35 @@
   
   // INLINE ----------------
   
-  @mixin wb-spans-at-breakpoint($breakpoint-suffix) {
-    $processed-spans: ();
+  @mixin wb-columns-at-breakpoint($breakpoint-suffix) {
+    $processed-columns: ();
     
     @for $b from 1 through $wb-grid-columns-count {
       @for $a from 1 through $b {
-        @if index($processed-spans, #{$a/$b}) == null {
-          $processed-spans: append($processed-spans, #{$a/$b});
-          .#{$wb-prefix}span#{$breakpoint-suffix}-#{$a}-#{$b} { width: (100% * $a / $b); }
+        @if index($processed-columns, #{$a/$b}) == null {
+          $processed-columns: append($processed-columns, #{$a/$b});
+          .#{$wb-prefix}col#{$breakpoint-suffix}-#{$a}-#{$b} { width: (100% * $a / $b); }
         }
       }
     }
     
-    [class*='#{$wb-prefix}span#{$breakpoint-suffix}-'] {
+    [class*='#{$wb-prefix}col#{$breakpoint-suffix}-'] {
       float: left;
       clear: none;
     }
     
     // first
-    .#{$wb-prefix}span#{$breakpoint-suffix}-first {
+    .#{$wb-prefix}col#{$breakpoint-suffix}-first {
       clear: left;
     }
     
     // last
-    .#{$wb-prefix}span#{$breakpoint-suffix}-last {
+    .#{$wb-prefix}col#{$breakpoint-suffix}-last {
       float: right;
     }
     
     // centered
-    .#{$wb-prefix}span#{$breakpoint-suffix}-centered {
+    .#{$wb-prefix}col#{$breakpoint-suffix}-centered {
       clear: both;
       float: none;
       margin-right: auto;
@@ -50,17 +50,17 @@
     }
   }
   
-  // create .span classes for each breakpoint
+  // create .col classes for each breakpoint
   $wb-processed-breakpoint-name: null;
   
   @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
     @if $wb-processed-breakpoint-name != null {
       @include wb-media('>#{$wb-processed-breakpoint-name}') {
-        @include wb-spans-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+        @include wb-columns-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
       }
     }
     @else {
-      @include wb-spans-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+      @include wb-columns-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
     }
     
     $wb-processed-breakpoint-name: $wb-breakpoint-name;

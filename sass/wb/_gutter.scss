@@ -4,10 +4,10 @@
 /* GRID: GUTTER
 /* --------------------------------- */
   
-  /* DEFAULT GRID GUTTER ---------------- */
+  /* DEFAULT ROW GUTTER ---------------- */
 
-    @mixin wb-grid-gutter($horizontal-gutter, $vertical-gutter: $horizontal-gutter, $grid-suffix: '') {
-      .#{$wb-prefix}grid#{$grid-suffix} {
+    @mixin wb-row-gutter($horizontal-gutter, $vertical-gutter: $horizontal-gutter, $row-suffix: '') {
+      .#{$wb-prefix}row#{$row-suffix} {
         margin: #{-0.5 * $vertical-gutter} #{-0.5 * $horizontal-gutter};
         
         > * {
@@ -22,11 +22,11 @@
     @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
       @if $wb-processed-breakpoint-name != null {
         @include wb-media('>#{$wb-processed-breakpoint-name}') {
-          @include wb-grid-gutter(map-get($wb-breakpoint, 'horizontal-gutter'), map-get($wb-breakpoint, 'vertical-gutter'));
+          @include wb-row-gutter(map-get($wb-breakpoint, 'horizontal-gutter'), map-get($wb-breakpoint, 'vertical-gutter'));
         }
       }
       @else {
-        @include wb-grid-gutter(map-get($wb-breakpoint, 'horizontal-gutter'), map-get($wb-breakpoint, 'vertical-gutter'));
+        @include wb-row-gutter(map-get($wb-breakpoint, 'horizontal-gutter'), map-get($wb-breakpoint, 'vertical-gutter'));
       }
       
       $wb-processed-breakpoint-name: $wb-breakpoint-name;

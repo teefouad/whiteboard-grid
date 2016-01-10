@@ -1,38 +1,38 @@
 @import 'init';
 
 /* --------------------------------- */
-/* GRID: GRID AUTO
+/* GRID: ROW AUTO
 /* --------------------------------- */
   
-  @mixin wb-grid-auto-at-breakpoint($breakpoint-suffix) {
-    $grid-auto-items-selector: ();
+  @mixin wb-row-auto-at-breakpoint($breakpoint-suffix) {
+    $row-auto-items-selector: ();
     
     @for $i from 1 through $wb-grid-columns-count {
-      .#{$wb-prefix}grid-auto#{$breakpoint-suffix}-#{$i} {
+      .#{$wb-prefix}row-auto#{$breakpoint-suffix}-#{$i} {
         > *{
           width: (100% / $i);
         }
       }
       
-      $grid-auto-items-selector: append($grid-auto-items-selector, unquote('.#{$wb-prefix}grid-auto#{$breakpoint-suffix}-#{$i} > *'), comma);
+      $row-auto-items-selector: append($row-auto-items-selector, unquote('.#{$wb-prefix}row-auto#{$breakpoint-suffix}-#{$i} > *'), comma);
     }
     
-    #{$grid-auto-items-selector}{
+    #{$row-auto-items-selector}{
       float: left;
     }
   }
 
-  // apply grid-auto classes for each breakpoint
+  // apply .row-auto classes for each breakpoint
   $wb-previous-breakpoint-name: null;
 
   @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
     @if $wb-previous-breakpoint-name != null {
       @include wb-media('>#{$wb-previous-breakpoint-name}') {
-        @include wb-grid-auto-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+        @include wb-row-auto-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
       }
     }
     @else {
-      @include wb-grid-auto-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+      @include wb-row-auto-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
     }
     
     $wb-previous-breakpoint-name: $wb-breakpoint-name;
