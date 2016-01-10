@@ -74,7 +74,7 @@ The following table gives you an overview of the `wb-col-*` classes that can be 
 ### Simple layouts
 Using a single set of `.wb-col-*` grid classes, you can create a basic grid system 
 that starts out stacked on mobile devices and tablet devices (the extra-small to medium range) before becoming horizontal on desktop (normal to large) devices.
-Place grid columns in any .wb-row where each .wb-col-* spans a certain portion of the row.
+Place grid columns in any `.wb-row` where each `.wb-col-*` spans a certain portion of the row.
     
 Here is a simple code example of how the default grid with 2 columns would look like:
     
