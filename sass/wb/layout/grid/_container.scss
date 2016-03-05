@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: CONTAINER
@@ -41,7 +41,8 @@
   }
   
   /* set default styles for all containers */
-  #{$wb-all-containers-selector} {
+  #{$wb-all-containers-selector},
+  .#{$wb-prefix}container-fluid {
     position: relative;
     margin-right: auto;
     margin-left: auto;

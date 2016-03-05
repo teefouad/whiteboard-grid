@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: OFFSET
@@ -11,7 +11,7 @@
       @for $a from 1 through $b {
         @if index($processed-offset, #{$a/$b}) == null {
           $processed-offset: append($processed-offset, #{$a/$b});
-          .#{$wb-prefix}offset#{$breakpoint-suffix}-#{$a}-#{$b} { margin-left: (100% * $a / $b); }
+          .#{$wb-prefix}col-offset#{$breakpoint-suffix}-#{$a}-#{$b} { margin-left: (100% * $a / $b); }
         }
       }
     }

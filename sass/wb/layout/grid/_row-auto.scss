@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: ROW AUTO
@@ -9,7 +9,7 @@
     
     @for $i from 1 through $wb-grid-columns-count {
       .#{$wb-prefix}row-auto#{$breakpoint-suffix}-#{$i} {
-        > *{
+        > * {
           width: (100% / $i);
         }
       }
@@ -17,8 +17,11 @@
       $row-auto-items-selector: append($row-auto-items-selector, unquote('.#{$wb-prefix}row-auto#{$breakpoint-suffix}-#{$i} > *'), comma);
     }
     
-    #{$row-auto-items-selector}{
+    #{$row-auto-items-selector} {
+      position: relative;
+      min-height: 1px;
       float: left;
+      @include box-sizing(border-box);
     }
   }
 

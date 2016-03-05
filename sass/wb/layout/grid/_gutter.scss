@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: GUTTER
@@ -8,10 +8,10 @@
 
     @mixin wb-row-gutter($horizontal-gutter, $vertical-gutter: $horizontal-gutter, $row-suffix: '') {
       .#{$wb-prefix}row#{$row-suffix} {
-        margin: #{-0.5 * $vertical-gutter} #{-0.5 * $horizontal-gutter};
+        margin: #{-0.5*$vertical-gutter} #{-0.5*$horizontal-gutter};
         
         > * {
-          padding: (0.5 * $vertical-gutter) (0.5 * $horizontal-gutter);
+          padding: (0.5*$vertical-gutter) (0.5*$horizontal-gutter);
         }
       }
     }

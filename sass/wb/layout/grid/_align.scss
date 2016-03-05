@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: ALIGN
@@ -17,40 +17,24 @@
     $breakpoint: map-get($wb-breakpoints, $breakpoint-name);
     $breakpoint-suffix: map-get($breakpoint, 'suffix');
     
-    .#{$wb-prefix}row-align#{$breakpoint-suffix}-top,
-    .#{$wb-prefix}row-align#{$breakpoint-suffix}-middle,
-    .#{$wb-prefix}row-align#{$breakpoint-suffix}-bottom {
-      font-size: 0;
-      
-      &:before {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        height: 100%;
-      }
-      
-      > * {
-        display: inline-block;
-        vertical-align: middle;
-        float: none;
-        font-size: 1rem;
-      }
+    .#{$wb-prefix}row-align-top#{$breakpoint-suffix},
+    .#{$wb-prefix}row-align-middle#{$breakpoint-suffix},
+    .#{$wb-prefix}row-align-bottom#{$breakpoint-suffix} {
+      @include wb-vertical-center-table;
     }
     
-    .#{$wb-prefix}row-align#{$breakpoint-suffix}-top {
-      &:before { vertical-align: top; }
+    .#{$wb-prefix}row-align-top#{$breakpoint-suffix} {
       > * { vertical-align: top; }
     }
     
-    .#{$wb-prefix}row-align#{$breakpoint-suffix}-bottom {
-      &:before { vertical-align: bottom; }
+    .#{$wb-prefix}row-align-bottom#{$breakpoint-suffix} {
       > * { vertical-align: bottom; }
     }
     
     // column align
-    .#{$wb-prefix}col-align#{$breakpoint-suffix}-top { vertical-align: top; }
-    .#{$wb-prefix}col-align#{$breakpoint-suffix}-middle { vertical-align: middle; }
-    .#{$wb-prefix}col-align#{$breakpoint-suffix}-bottom { vertical-align: bottom; }
+    .#{$wb-prefix}col-align-top#{$breakpoint-suffix} { vertical-align: top; }
+    .#{$wb-prefix}col-align-middle#{$breakpoint-suffix} { vertical-align: middle; }
+    .#{$wb-prefix}col-align-bottom#{$breakpoint-suffix} { vertical-align: bottom; }
   }
   
   // create align classes for each breakpoint

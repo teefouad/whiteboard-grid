@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: PULL
@@ -11,7 +11,7 @@
       @for $a from 1 through $b {
         @if index($processed-pull, #{$a/$b}) == null {
           $processed-pull: append($processed-pull, #{$a/$b});
-          .#{$wb-prefix}pull#{$breakpoint-suffix}-#{$a}-#{$b} { left: (-100% * $a / $b); }
+          .#{$wb-prefix}col-pull#{$breakpoint-suffix}-#{$a}-#{$b} { left: (-100% * $a / $b); }
         }
       }
     }

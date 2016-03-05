@@ -1,0 +1,30 @@
+@import 'import';
+
+/* MODIFIER: ROW GUTTER SIZE ---------------- */
+
+  @mixin wb-row-gutter-modifiers-at-breakpoint($breakpoint-suffix) {
+    @include wb-row-gutter(0                         , 0                         , '-gutter-none#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-small     , $wb-grid-gutter-small     , '-gutter-small#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-smaller   , $wb-grid-gutter-smaller   , '-gutter-smaller#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-smallest  , $wb-grid-gutter-smallest  , '-gutter-smallest#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-normal    , $wb-grid-gutter-normal    , '-gutter-normal#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-large     , $wb-grid-gutter-large     , '-gutter-large#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-larger    , $wb-grid-gutter-larger    , '-gutter-larger#{$breakpoint-suffix}');
+    @include wb-row-gutter($wb-grid-gutter-largest   , $wb-grid-gutter-largest   , '-gutter-largest#{$breakpoint-suffix}');
+  }
+  
+  // create gutter modifier classes for each breakpoint
+  $wb-processed-breakpoint-name: null;
+  
+  @each $wb-breakpoint-name, $wb-breakpoint in $wb-breakpoints {
+    @if $wb-processed-breakpoint-name != null {
+      @include wb-media('>#{$wb-processed-breakpoint-name}') {
+        @include wb-row-gutter-modifiers-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+      }
+    }
+    @else {
+      @include wb-row-gutter-modifiers-at-breakpoint(map-get($wb-breakpoint, 'suffix'));
+    }
+    
+    $wb-processed-breakpoint-name: $wb-breakpoint-name;
+  }

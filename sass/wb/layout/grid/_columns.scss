@@ -1,4 +1,4 @@
-@import 'init';
+@import 'import';
 
 /* --------------------------------- */
 /* GRID: COLUMNS
@@ -32,17 +32,17 @@
     }
     
     // first
-    .#{$wb-prefix}col#{$breakpoint-suffix}-first {
+    .#{$wb-prefix}col-first#{$breakpoint-suffix} {
       clear: left;
     }
     
     // last
-    .#{$wb-prefix}col#{$breakpoint-suffix}-last {
+    .#{$wb-prefix}col-last#{$breakpoint-suffix} {
       float: right;
     }
     
     // centered
-    .#{$wb-prefix}col#{$breakpoint-suffix}-centered {
+    .#{$wb-prefix}col-centered#{$breakpoint-suffix} {
       clear: both;
       float: none;
       margin-right: auto;

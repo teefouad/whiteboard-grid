@@ -1,50 +1,58 @@
-var compass = require("compass-importer");
-var media = require("easy-media-queries");
-
+var media = require('whiteboard-media');
+var essentials = require('whiteboard-essentials');
+var compass = require('compass-importer');
 
 module.exports = function(grunt) {
   
   // Load grunt tasks
-  require("load-grunt-tasks")(grunt);
+  require('load-grunt-tasks')(grunt);
   
   // Configuration for tasks goes here.
   grunt.initConfig({
-    pkg: grunt.file.readJSON("package.json"),
+    pkg: grunt.file.readJSON('package.json'),
     
     sass: {
       options: {
         sourceMap: false,
-        outputStyle: "expanded",
-        importer: [media, compass]
+        outputStyle: 'expanded',
+        importer: [media, essentials, compass]
       },
       
       grid: {
         files: [{
           expand: true,
-          cwd: "sass",
-          src: ["*.scss", "**/*.scss"],
-          dest: "css",
-          ext: ".css",
-          extDot: "last"
+          cwd: 'sass',
+          src: ['*.scss', '**/*.scss'],
+          dest: 'css',
+          ext: '.css',
+          extDot: 'last'
         }]
       },
       
-      demos: {
+      demo: {
         files: [{
           expand: true,
-          cwd: "demos",
-          src: ["*.scss"],
-          dest: "demos",
-          ext: ".css",
-          extDot: "last"
+          cwd: 'demo',
+          src: ['*.scss'],
+          dest: 'demo',
+          ext: '.css',
+          extDot: 'last'
         }]
       }
     },
     
     watch: {
-      sass: {
-        files: ["sass/*.scss", "sass/wb/*.scss", "sass/wb/**/"],
-        tasks: ["sass:grid", "notify:complete"],
+      grid: {
+        files: ['sass/*.scss', 'sass/**/*.scss'],
+        tasks: ['sass:grid', 'notify:complete'],
+        options: {
+          spawn: false
+        }
+      },
+      
+      demo: {
+        files: ['demo/*.scss'],
+        tasks: ['sass:demo', 'notify:complete'],
         options: {
           spawn: false
         }
@@ -57,16 +65,16 @@ module.exports = function(grunt) {
           enabled: true,
           success: true,
           duration: 1,
-          message: "Compiled successfully"
+          message: 'Compiled successfully'
         },
       }
     }
   });
   
-  // Where we tell Grunt what to do when we type "grunt ***" into the terminal.
-  grunt.registerTask("build", [
-    "sass:grid",
-    "notify"
+  // Where we tell Grunt what to do when we type 'grunt ***' into the terminal.
+  grunt.registerTask('build', [
+    'sass:grid',
+    'notify'
   ]);
 
 };
