@@ -1,6 +1,6 @@
 {
   "name": "whiteboard-grid",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Fully responsive, fluid and nestable grid system",
   "main": "index.js",
   "scripts": {
